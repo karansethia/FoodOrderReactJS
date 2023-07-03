@@ -4,7 +4,7 @@
   border: none;
   background-color: #4d1601;
   color: white;
-  padding: 0.75rem 3rem;
+  padding: 0.35rem 1rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -17,6 +17,10 @@
   background-color: #2c0d00;
 }
 
+.text {
+  font-size: 0.7rem;
+}
+
 .icon {
   width: 1.35rem;
   height: 1.35rem;
@@ -25,10 +29,11 @@
 
 .badge {
   background-color: #b94517;
-  padding: 0.25rem 1rem;
+  padding: 0.10rem 0.5rem;
   border-radius: 25px;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .button:hover .badge,
@@ -61,3 +66,5 @@
     transform: scale(1);
   }
 }
+
+span {}
