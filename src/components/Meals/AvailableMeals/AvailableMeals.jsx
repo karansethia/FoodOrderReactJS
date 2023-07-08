@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../../UI/Card';
+import Card from '../../UI/Card/Card';
 import classes from './AvailableMeals.module.css'
 import MealItem from '../MealItem/MealItem';
 
