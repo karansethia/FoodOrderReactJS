@@ -32,7 +32,7 @@ export const MEALS_DATA = [
 
 const AvailableMeals = () => {
 
-  const mealsList = MEALS_DATA.map(mealItem => <MealItem key={mealItem.id} name={mealItem.name} desc={mealItem.description} price={mealItem.price} />
+  const mealsList = MEALS_DATA.map(mealItem => <MealItem id={mealItem.id} key={mealItem.id} name={mealItem.name} desc={mealItem.description} price={mealItem.price} />
   );
 
   return (
