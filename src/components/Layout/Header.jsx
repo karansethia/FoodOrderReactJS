@@ -3,12 +3,12 @@ import meals from "../../assets/meals.jpg";
 import classes from "./Header.module.css";
 import CartBtn from "./CartBtn";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <React.Fragment>
       <header className={classes.header}>
         <h1>Zwiggy</h1>
-        <CartBtn />
+        <CartBtn onClick={props.onCartRender} />
       </header>
       <div className={classes.mainImage}>
         <img src={meals} alt="mealsImage" />
