@@ -4,6 +4,7 @@ import './App.css'
 import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 function App() {
 
@@ -17,13 +18,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <CartProvider>
       {cartRender && <Cart onCartRemove={removeCartHandler} />}
       <Header onCartRender={renderCartHandler} onCartRemove={removeCartHandler} />
       <main>
         <Meals />
       </main>
-    </div>
+    </CartProvider>
   );
 }
 
