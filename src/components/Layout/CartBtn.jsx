@@ -6,7 +6,7 @@ import CartContext from '../../store/cart-context'
 const CartBtn = props => {
 
   const cartContext = useContext(CartContext);
-  const cartNum = cartContext.items.reduce((current) => {
+  const cartNum = cartContext.items.reduce((current, item) => {
     return current + item.amount
   }, 0)
 
