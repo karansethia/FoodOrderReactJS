@@ -1,38 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../../UI/Card/Card';
 import classes from './AvailableMeals.module.css'
 import MealItem from '../MealItem/MealItem';
 
-export const MEALS_DATA = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
-
 const AvailableMeals = () => {
 
-  const mealsList = MEALS_DATA.map(mealItem => <MealItem id={mealItem.id} key={mealItem.id} name={mealItem.name} desc={mealItem.description} price={mealItem.price} />
+  const [meals, setMeals] = useState([])
+
+  useEffect(() => {
+
+    const fetchMeals = async () => {
+      const response = await fetch('https://zwiggybykaran-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json');
+      const resData = await response.json();
+      const mealsData = [];
+      for (const mealId in resData) {
+        mealsData.push({
+          id: mealId,
+          name: resData[mealId].name,
+          desc: resData[mealId].desc,
+          price: resData[mealId].price
+        })
+      }
+      setMeals(mealsData)
+    }
+    fetchMeals();
+  }, [])
+
+
+  const mealsList = meals.map(mealItem => <MealItem id={mealItem.id} key={mealItem.id} name={mealItem.name} desc={mealItem.description} price={mealItem.price} />
   );
 
   return (
