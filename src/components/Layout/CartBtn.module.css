@@ -2,13 +2,13 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: #4d1601;
+  background-color: #f98220;
   color: white;
-  padding: 0.35rem 1rem;
+  padding: 0.45rem 1rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 25px;
+  border-radius: 15px;
   font-weight: bold;
 }
 
