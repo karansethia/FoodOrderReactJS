@@ -2,15 +2,22 @@ import React, { useEffect, useState } from 'react'
 import Card from '../../UI/Card/Card';
 import classes from './AvailableMeals.module.css'
 import MealItem from '../MealItem/MealItem';
+import Loader from '../../UI/Loader/Loader';
+
 
 const AvailableMeals = () => {
 
   const [meals, setMeals] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const [fError, setError] = useState()
 
   useEffect(() => {
 
     const fetchMeals = async () => {
       const response = await fetch('https://zwiggybykaran-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json');
+      if (!response.ok) {
+        throw new Error('Soemthing went wrong')
+      }
       const resData = await response.json();
       const mealsData = [];
       for (const mealId in resData) {
@@ -21,21 +28,40 @@ const AvailableMeals = () => {
           price: resData[mealId].price
         })
       }
-      setMeals(mealsData)
+      setMeals(mealsData);
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 2500);
     }
-    fetchMeals();
+
+    fetchMeals().catch(error => {
+      setIsLoading(false)
+      setError(error.message)
+    });
+
   }, [])
 
+  if (fError) {
+    return (
+      <section className={classes.meals}>
+        <Card>
+          <p>{fError}</p>
+        </Card>
+      </section>
+    )
+  }
 
-  const mealsList = meals.map(mealItem => <MealItem id={mealItem.id} key={mealItem.id} name={mealItem.name} desc={mealItem.description} price={mealItem.price} />
+  const mealsList = meals.map(mealItem => <MealItem id={mealItem.id} key={mealItem.id} name={mealItem.name} desc={mealItem.desc} price={mealItem.price} />
   );
 
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>
+        {isLoading && <h2>Loading Delicious Meals for you</h2>}
+        {isLoading && <Loader />}
+        {!isLoading && <ul>
           {mealsList}
-        </ul>
+        </ul>}
       </Card>
     </section>
   )
