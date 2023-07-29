@@ -3,6 +3,7 @@ import Card from '../../UI/Card/Card';
 import classes from './AvailableMeals.module.css'
 import MealItem from '../MealItem/MealItem';
 import Loader from '../../UI/Loader/Loader';
+import ErrorPage from '../../Layout/ErrorPage';
 
 
 const AvailableMeals = () => {
@@ -42,10 +43,11 @@ const AvailableMeals = () => {
   }, [])
 
   if (fError) {
+    console.log(fError);
     return (
       <section className={classes.meals}>
         <Card>
-          <p>{fError}</p>
+          <ErrorPage />
         </Card>
       </section>
     )
