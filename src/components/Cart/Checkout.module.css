@@ -5,7 +5,7 @@
 }
 
 .control {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .control label {
@@ -15,11 +15,19 @@
 }
 
 .control input {
+  height: 2rem;
   font: inherit;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 20rem;
   max-width: 100%;
+  margin-right: 20px;
+}
+
+.userInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .actions {
@@ -56,6 +64,10 @@
 
 .invalid label {
   color: #ca3e51;
+}
+
+.invalid p {
+  font-size: 0.8rem;
 }
 
 .invalid input {
