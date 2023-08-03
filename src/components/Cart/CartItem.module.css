@@ -3,11 +3,12 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #f4ab1f;
-  padding: 1rem 0;
-  margin: 1rem 0;
+  padding: 0.5rem 0 0.25rem 0;
+  margin: 0.5rem 0;
 }
 
 .cart-item h2 {
+  font-size: 1.5rem;
   margin: 0 0 0.5rem 0;
   color: #363636;
 }
@@ -27,7 +28,7 @@
 .amount {
   font-weight: bold;
   border: 1px solid #ccc;
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.75rem;
   border-radius: 6px;
   color: #363636;
 }
